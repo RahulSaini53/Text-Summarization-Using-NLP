@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text summerization</title>
+    
+    <style>
+        body{
+            background-color: rgb(238, 238, 238);
+        }
+        h1{
+            text-align: center;
+        }
+        p{
+            text-align: justify;
+        }
+        .content{
+            display: flex;
+            justify-content:space-evenly;
+            width: 90vw;
+            height: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border:3px solid blue;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+
+        .text{
+            width: 40%;
+            
+            background-color: rgb(238, 238, 238);
+            /* border: 2px solid red; */
+            /* padding:10px; */
+        }
+        .summary1{
+            border-radius:8px;
+            font-size:17px;
+            width: 37vw;
+            height:40vh;
+            color:white;
+            border: 2px solid rgb(43, 0, 255);
+            padding:10px;
+            
+            background-color: rgba(0, 0, 0, 0.877);
+            box-shadow: 5px 5px 10px rgb(0, 0, 0,0.6);
+        }
+        .text-input{
+            border-radius:8px;
+            font-size:16px;
+            resize:none;
+            width: 35vw;
+            height:40vh;
+            background-color: rgba(0, 0, 0, 0.877);
+            /* border: 2px solid red; */
+            color: white;
+            padding:10px;
+            margin-bottom: 8px;
+            margin-top:20px;
+            box-shadow: 5px 5px 10px rgb(0, 0, 0,0.6);
+        }
+        .submit-button{
+             width:auto;
+             height: auto;
+             background-color: brown;
+             font-size:medium;
+        }
+
+        .clear{
+            margin-left:15px;
+            width:auto;
+            height: auto;
+            background-color: brown;
+            font-size:medium;
+       }
+        .submit-button:hover{
+            background-color: red;
+            font-size: 105%;
+        }
+
+        .clear:hover{
+            background-color: red;
+            font-size: 105%;
+        }
+
+        .summar-text{
+            color:red;
+            font-size:20px;
+        }
+
+        .length{
+            width:35px;
+            color:black;
+            font-size:17px;
+        }
+
+        .length1{
+            width:35vw;
+            display:flex;
+            align-items:center;
+
+        }
+        
+         .length:nth-child(2){
+            margin-top:10px;
+        } 
+
+
+        .range1{
+            margin-left:40px;
+            color:red;
+            font-size:17px;
+        }
+
+        .length2{
+            margin-left:30px;
+            color:red;
+            font-size:17px;
+        }
+
+        .length3{
+            color:red;
+            font-size:17px;
+        }
+
+        .range{
+            width:80px;
+        }
+
+        .range2{
+            width:34px;
+        }
+   
+        .next-page{
+            align-self:flex-end;
+            justify-self: flex-start;
+        }
+
+
+       
+        
+    </style>
+    
+</head>
+<body>
+    <header>
+        <h1>text summarization</h1>
+    </header>
+    <main>
+          <div class="content">
+          
+           <div class="text">
+            <form action="" method="post">
+             {% csrf_token %}
+            <!-- Hii my name is rahul saini. -->
+           <textarea name="text" id="text1"  class="text-input" placeholder="Hii please enter your text here" required>{{text}}</textarea>
+         <div class="length1">
+           <button type="submit" class="submit-button">summarize text</button>
+           <button type="button" class="clear">clear</button>
+           <label for="range3" class='range1'>Range:</label>
+           <input type="range" class="range" name="slider-value" min="0" max="100" step="5">
+           <input type="text" class="range2" >
+            <label for="length" class="length2">Words:</label>
+            <input type="text" value="{{words1}}" class="length">
+
+        </div>
+           </form>
+        </div>
+
+            <div class="div1">
+                <span class="summar-text">Summarized Text:</span>
+                <div class="summary1">
+                    {{summary}}
+                </div>
+                <div class="length3">
+                <label for="length" class="length3">Words:</label>
+                <input type="text" value="{{words2}}" class="length">
+            </div>
+          </div>
+          <br> 
+          {% comment %} <div class='next-page'>
+            <a href="\summarize">Next</a>
+          </div> {% endcomment %}
+
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+        let item1=document.querySelector('.text-input');
+        let item2=document.querySelector('.summary1');
+        let item3=document.querySelector('.clear');
+        
+         item3.addEventListener('click',function(){
+            item1.innerHTML="";
+           item2.innerHTML="";
+           item2.style.overflowY="hidden";
+           });
+         
+        text1=item2.innerText;
+        text1=text1.split(' ');
+        l=text1.length;
+        
+        if(l > 210){
+            console.log(l);
+           item2.style.overflowY="scroll";
+        } 
+        
+        let item4=document.querySelector('.range');
+        let x=document.querySelector('.range2');
+        console.log(x.value)
+
+        item4.addEventListener('change',function(){
+            console.log("Change event is working");
+            x.value=item4.value+'%';
+           });
+        
+         y=document.querySelectorAll('.length,.range2');
+        
+        for(let i=0;i<y.length;i++){
+           y[i].addEventListener("keydown", function(event) {
+            event.preventDefault();
+        });
+        }
+        
+        {% comment %} item2.innerText=item4.value {% endcomment %}
+         
+
+    </script>
+</body>
+</html>

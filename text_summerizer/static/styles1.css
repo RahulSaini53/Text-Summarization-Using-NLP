@@ -1,0 +1,65 @@
+body{
+    background-color: rgb(238, 238, 238);
+}
+h1{
+    text-align: center;
+}
+p{
+    text-align: justify;
+}
+.content{
+    display: flex;
+    justify-content:space-evenly;
+    width: 90vw;
+    height: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border:3px solid blue;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* div:nth-child(n){
+    width: 30%;
+    background-color: aquamarine;
+    border: 2px solid red;
+    padding:10px;
+} */
+.text{
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.877);
+    /* background-color: aquamarine; */
+    /* border: 2px solid red; */
+    /* padding:10px; */
+}
+.summary1{
+    width: 30vw;
+    height:30vh;
+    color:white;
+    border: 2px solid rgb(255, 0, 8);
+    padding:10px;
+    overflow-y:scroll;
+    background-color: rgba(0, 0, 0, 0.881);
+}
+.text-input{
+    
+    resize:none;
+    width: 90%;
+    height:30vh;
+    background-color: rgba(0, 0, 0, 0.064);
+    /* border: 2px solid red; */
+    color: white;
+    padding:10px;
+    margin-bottom: 8px;
+    margin-top:20px;
+}
+.submit-button{
+     width:auto;
+     height: auto;
+     background-color: brown;
+     font-size:medium;
+}
+.submit-button:hover{
+    background-color: red;
+    font-size: 105%;
+}

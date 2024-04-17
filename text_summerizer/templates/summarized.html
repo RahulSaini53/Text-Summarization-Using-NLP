@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .summary1{
+            width: 50vw;
+            height:30vh;
+            background-color: aquamarine; 
+            border: 2px solid red;
+            padding:10px;
+        }
+        .div1{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .range{
+            width:80px;
+        }
+
+        .range2{
+            width:34px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        Summarized Text:
+        <div class="summary1">
+            {{val}}
+            {{L}}
+            {{Text}}
+        </div>
+        <form action="" method="post">
+            {%csrf_token%}
+            <input type='text' name='text'>
+        <input type="range" class="range" name="slider-value" min="0" max="100" step="5">
+           <input type="text" class="range2" value="{{ val }}">
+           <button type="submit">Submit</button>
+        </form>
+
+        <div class="div1">
+            <a href="/" target="_blank">back </a>
+        </div>
+</body>
+</html>
